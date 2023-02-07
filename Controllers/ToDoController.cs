@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ToDoApi.Models;
 
@@ -24,6 +25,7 @@ namespace ToDoApi.Controllers
         /// </summary>
         /// <returns>All todos</returns>
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllTasks()
         {
             List<ToDoTable> toDoItems = await _context.ToDoTables.ToListAsync();
